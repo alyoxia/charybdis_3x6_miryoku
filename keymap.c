@@ -100,7 +100,7 @@ const uint16_t PROGMEM combo_layer_lock_sym[] = {ENT_SYM, KC_CAPS, COMBO_END};
 #define _________________DEAD_HALF_ROW_________________  XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX
 #define _________________TRNS_HALF_ROW_________________  _______,_______,_______,_______,_______,_______
 #define ________________HOME_ROW_GACS_L________________  _______,KC_LGUI,KC_LALT,KC_LCTL,KC_LSFT,XXXXXXX
-#define ________________HOME_ROW_GACS_R____:`____________  XXXXXXX,KC_LSFT,KC_LCTL,KC_LALT,KC_LGUI,_______
+#define ________________HOME_ROW_GACS_R________________  XXXXXXX,KC_LSFT,KC_LCTL,KC_LALT,KC_LGUI,_______
 #define ________________KEYB_CTRL_ROW_L________________  QK_BOOT, QK_RBT,EE_CLR,DB_TOGG,XXXXXXX,KC_ESC
 #define ________________KEYB_CTRL_ROW_R________________   KC_ESC,XXXXXXX,DB_TOGG, EE_CLR,QK_RBT,QK_BOOT
 
@@ -211,14 +211,11 @@ const uint16_t PROGMEM combo_layer_lock_sym[] = {ENT_SYM, KC_CAPS, COMBO_END};
 #define _HOME_ROW_MOD_GACS(                                                     \
     L00, L01, L02, L03, L04, L05, R06, R07, R08, R09, R10, R11,                 \
     L12, L13, L14, L15, L16, L17, R18, R19, R20, R21, R22, R23,                 \
-    L24, L25, L26, L27, L28, L29, R30, R31, R32, R33, R34, R35,                 \
     ...)                                                                        \
           L00,         L01,         L02,         L03,         L04,         L05, \
           R06,         R07,         R08,         R09,         R10,         R11, \
-          L12,         L13,         L14,         L15,         L16,         L17, \
-          R18,         R19,         R20,         R21,         R22,         R23, \
-          L24, LGUI_T(L25), LALT_T(L26), LCTL_T(L27), LSFT_T(L28),         L29, \
-          R30, RSFT_T(R31), RCTL_T(R32), LALT_T(R33), LGUI_T(R34),         R35, \
+          L12, LGUI_T(L13), LALT_T(L14), LCTL_T(L15), LSFT_T(L16),         L17, \
+          R18, RSFT_T(R19), RCTL_T(R20), LALT_T(R21), LGUI_T(R22),         R23, \
     __VA_ARGS__
 #define HOME_ROW_MOD_GACS(...) _HOME_ROW_MOD_GACS(__VA_ARGS__)
 
