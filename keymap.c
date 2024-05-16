@@ -17,6 +17,17 @@
 #include QMK_KEYBOARD_H
 
 
+/**
+ * Alyoxia:
+ *
+ * Main changes to antonkis' layout:
+ * - Remove top row
+ * - Remove lower 2 left thumb keys
+ * - Remove lower 1 right thumb key
+ * - Remove function layer (due to missing right thumb key)
+ * - Swap right hand BTN1 and BTN2
+ */
+
 enum charybdis_keymap_layers {
     LAYER_BASE = 0,
     LAYER_NAVIGATION,
@@ -101,22 +112,6 @@ const uint16_t PROGMEM combo_layer_lock_sym[] = {ENT_SYM, KC_CAPS, COMBO_END};
  *
  * See https://github.com/manna-harbour/miryoku for the original layout.
  */
-
-/**
- * \brief Function layer.
- *
- * Secondary left-hand layer has function keys mirroring the numerals on the
- * primary layer with above F9 on the top row, plus system keys on the inner
- * column. App is on the tertiary thumb key and other thumb keys are duplicated
- * from the base layer to enable auto-repeat.
- */
-/*
-#define LAYOUT_LAYER_FUNCTION                                                                          \
-    _______, KC_F12,  KC_F7,  KC_F8,  KC_F9,KC_PSCR,  _________________DEAD_HALF_ROW_________________, \
-    _______, KC_F11,  KC_F4,  KC_F5,  KC_F6,KC_SCRL,  ________________HOME_ROW_GACS_R________________, \
-    _______, KC_F10,  KC_F1,  KC_F2,  KC_F3,KC_PAUS,  XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,_______, \
-                             KC_APP,_______, KC_TAB,                                   KC_ENT,KC_BSPC
-*/
 
 /**
  * \brief Media layer.
@@ -213,7 +208,6 @@ const uint16_t PROGMEM combo_layer_lock_sym[] = {ENT_SYM, KC_CAPS, COMBO_END};
  *
  *     HOME_ROW_MOD_GACS(LAYER_ALPHAS_QWERTY)
  */
-/*
 #define _HOME_ROW_MOD_GACS(                                                     \
     L00, L01, L02, L03, L04, L05, R06, R07, R08, R09, R10, R11,                 \
     L12, L13, L14, L15, L16, L17, R18, R19, R20, R21, R22, R23,                 \
@@ -227,7 +221,7 @@ const uint16_t PROGMEM combo_layer_lock_sym[] = {ENT_SYM, KC_CAPS, COMBO_END};
           R30, RSFT_T(R31), RCTL_T(R32), LALT_T(R33), LGUI_T(R34),         R35, \
     __VA_ARGS__
 #define HOME_ROW_MOD_GACS(...) _HOME_ROW_MOD_GACS(__VA_ARGS__)
-*/
+
 #define LAYOUT_wrapper(...) LAYOUT(__VA_ARGS__)
 
 //const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -240,7 +234,7 @@ const uint16_t PROGMEM combo_layer_lock_sym[] = {ENT_SYM, KC_CAPS, COMBO_END};
 //  [LAYER_SYMBOLS] = LAYOUT_wrapper(LAYOUT_LAYER_SYMBOLS),
 //};
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [LAYER_BASE] = LAYOUT_wrapper(LAYOUT_LAYER_BASE),
+  [LAYER_BASE] = LAYOUT_wrapper(HOME_ROW_MOD_GACS(LAYOUT_LAYER_BASE)),
   [LAYER_NAVIGATION] = LAYOUT_wrapper(LAYOUT_LAYER_NAVIGATION),
   [LAYER_MEDIA] = LAYOUT_wrapper(LAYOUT_LAYER_MEDIA),
   [LAYER_NUMERAL] = LAYOUT_wrapper(LAYOUT_LAYER_NUMERAL),
