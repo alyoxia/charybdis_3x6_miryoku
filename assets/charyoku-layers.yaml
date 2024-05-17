@@ -13,7 +13,7 @@ layers:
   - Y
   - ''''
   - /
-  - PSCR
+  - F5
   - {t: A, h: LGUI}
   - {t: R, h: LALT}
   - {t: S, h: LCTL}
@@ -25,7 +25,7 @@ layers:
   - {t: I, h: LALT}
   - {t: O, h: LGUI}
   - ;
-  - CW TOGG
+  - ''
   - Z
   - X
   - C
@@ -34,9 +34,9 @@ layers:
   - K
   - H
   - '-'
-  - {h: MOUSE, t: ","}
-  - {h: NAVI, t: "."}
-  - CAPS
+  - {h: MOUSE, t: ','}
+  - {h: NAVI, t: '.'}
+  - DEL
   - {h: MEDIA, t: ESC}
   - {h: NAVI, t: SPC}
   - {h: MOUSE, t: TAB}
@@ -76,7 +76,7 @@ layers:
   - Ctl+ X
   - Ctl+ C
   - HOME
-  - {h: POINTER, t: END}
+  - LT(LAYER POINTER, END)
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - ESC
@@ -109,7 +109,7 @@ layers:
   - VOLU
   - MNXT
   - RGB M P
-  - {t: ▽, type: trans}
+  - EE_RST
   - ''
   - ''
   - ''
@@ -196,14 +196,14 @@ layers:
   - {t: ▽, type: trans}
   - ''
   - ''
-  - SNP TOG
-  - DRG TOG
+  - SNP
+  - DRG
   - ''
   - Ctl+ X
   - Ctl+ C
-  - ''
+  - DRG
   - {t: ▽, type: trans}
-  - SNP TOG
+  - SNP
   - {t: ▽, type: trans}
   - ESC
   - BTN1

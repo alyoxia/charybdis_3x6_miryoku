@@ -32,6 +32,21 @@
 
 #define CAPS_WORD_INVERT_ON_SHIFT
 
+// Home row mods settings
+#define TAPPING_TERM 200
+
+/**
+ * Prevent normal rollover on alphas from accidentally triggering mods.
+ *
+ * Ignores key presses that interrupt a mod-tap.  Must-have for Home Row mod.
+ *
+ * Without `IGNORE_MOD_TAP_INTERRUPT`, within `TAPPING_TERM`:
+ *   Mod(a)🠗 e🠗 Mod(a)🠕 e🠕 ➞ Mod+e
+ * With `IGNORE_MOD_TAP_INTERRUPT`, within `TAPPING_TERM`:
+ *   Mod(a)🠗 e🠗 Mod(a)🠕 e🠕 ➞ ae
+ */
+#define IGNORE_MOD_TAP_INTERRUPT
+
 /* Charybdis-specific features. */
 
 #ifdef COMBO_ENABLE

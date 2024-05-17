@@ -43,7 +43,6 @@ enum charybdis_keymap_layers {
 #define TAB_PTR LT(LAYER_POINTER, KC_TAB)
 #define LA2_PTR LT(LAYER_POINTER, KC_COMM)
 #define LA3_PTR LT(LAYER_POINTER, KC_END)
-//#define DEL_FUN LT(LAYER_FUNCTION, KC_DEL)
 #define BSP_NUM LT(LAYER_NUMERAL, KC_BSPC)
 #define ENT_SYM LT(LAYER_SYMBOLS, KC_ENT)
 
@@ -92,8 +91,8 @@ const uint16_t PROGMEM combo_layer_lock_sym[] = {ENT_SYM, KC_CAPS, COMBO_END};
  */
 #define LAYOUT_LAYER_BASE                                                                              \
      KC_APP,   KC_Q,   KC_W,   KC_F,   KC_P,   KC_B,     KC_J,   KC_L,   KC_U,   KC_Y,KC_QUOT,KC_SLSH, \
-    KC_PSCR,   KC_A,   KC_R,   KC_S,   KC_T,   KC_G,     KC_M,   KC_N,   KC_E,   KC_I,   KC_O,KC_SCLN, \
-    CW_TOGG,   KC_Z,   KC_X,   KC_C,   KC_D,   KC_V,     KC_K,   KC_H,KC_MINS,LA2_PTR,LA2_NAV,KC_CAPS, \
+    KC_F5,   KC_A,   KC_R,   KC_S,   KC_T,   KC_G,     KC_M,   KC_N,   KC_E,   KC_I,   KC_O,KC_SCLN, \
+    XXXXXXX,   KC_Z,   KC_X,   KC_C,   KC_D,   KC_V,     KC_K,   KC_H,KC_MINS,LA2_PTR,LA2_NAV,KC_DEL, \
                             ESC_MED,SPC_NAV,TAB_PTR,                                  ENT_SYM,BSP_NUM
 
 /** Convenience row shorthands. */
@@ -101,8 +100,6 @@ const uint16_t PROGMEM combo_layer_lock_sym[] = {ENT_SYM, KC_CAPS, COMBO_END};
 #define _________________TRNS_HALF_ROW_________________  _______,_______,_______,_______,_______,_______
 #define ________________HOME_ROW_GACS_L________________  _______,KC_LGUI,KC_LALT,KC_LCTL,KC_LSFT,XXXXXXX
 #define ________________HOME_ROW_GACS_R________________  XXXXXXX,KC_LSFT,KC_LCTL,KC_LALT,KC_LGUI,_______
-#define ________________KEYB_CTRL_ROW_L________________  QK_BOOT, QK_RBT,EE_CLR,DB_TOGG,XXXXXXX,KC_ESC
-#define ________________KEYB_CTRL_ROW_R________________   KC_ESC,XXXXXXX,DB_TOGG, EE_CLR,QK_RBT,QK_BOOT
 
 /*
  * Layers used on the Charybdis 4x6.
@@ -122,7 +119,7 @@ const uint16_t PROGMEM combo_layer_lock_sym[] = {ENT_SYM, KC_CAPS, COMBO_END};
 #define LAYOUT_LAYER_MEDIA                                                                             \
     _________________DEAD_HALF_ROW_________________,  RGB_VAI,RGB_HUI,RGB_SAI,RGB_MOD,RGB_SPI,RGB_TOG, \
     ________________HOME_ROW_GACS_L________________,  KC_MPRV,KC_VOLD,KC_MUTE,KC_VOLU,KC_MNXT,RGB_M_P, \
-    _______,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,  XXXXXXX,KC_BRID,XXXXXXX,KC_BRIU,XXXXXXX,XXXXXXX, \
+    EE_CLR,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,  XXXXXXX,KC_BRID,XXXXXXX,KC_BRIU,XXXXXXX,XXXXXXX, \
                             _______,KC_MPLY,KC_MSTP,                                  KC_MSTP,KC_MPLY
 
 
@@ -147,7 +144,7 @@ const uint16_t PROGMEM combo_layer_lock_sym[] = {ENT_SYM, KC_CAPS, COMBO_END};
 #define LAYOUT_LAYER_POINTER                                                                           \
     _________________DEAD_HALF_ROW_________________,  KC_AGIN,KC_UNDO,KC_BTN3,KC_BTN5,DPI_MOD, KC_TAB, \
     ________________HOME_ROW_GACS_L________________,  KC_PSTE,KC_BTN1,KC_BTN2,KC_BTN4,S_D_MOD, KC_SPC, \
-    _______,XXXXXXX,XXXXXXX,SNP_TOG,DRG_TOG,XXXXXXX,   KC_CUT,KC_COPY,DRGSCRL,_______,SNP_TOG,_______, \
+    _______,XXXXXXX,XXXXXXX,SNIPING,DRGSCRL,XXXXXXX,   KC_CUT,KC_COPY,DRGSCRL,_______,SNIPING,_______, \
                              KC_ESC,KC_BTN1,_______,                                   KC_ENT,KC_BSPC
 
 /**
@@ -465,9 +462,7 @@ void rgb_matrix_colorify_led(uint8_t led, uint8_t mods, bool caps_lock, bool cap
             set_color(RGB_CORAL);
             break;
         case LAYER_MEDIA:
-            if (inarray(media_layer_leds, led)) {
-                set_color(RGB_MAGENTA);
-            }
+            set_color(RGB_MAGENTA);
             break;
         default:
             break;
