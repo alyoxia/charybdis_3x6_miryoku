@@ -12,7 +12,7 @@ layers:
   - U
   - Y
   - ''''
-  - /
+  - DEL
   - F5
   - {t: A, h: LGUI}
   - {t: R, h: LALT}
@@ -36,7 +36,7 @@ layers:
   - '-'
   - {h: MOUSE, t: ','}
   - {h: NAVI, t: '.'}
-  - DEL
+  - CW_TOGG
   - {h: MEDIA, t: ESC}
   - {h: NAVI, t: SPC}
   - {h: MOUSE, t: TAB}
@@ -151,7 +151,7 @@ layers:
   - LALT
   - LGUI
   - SPC
-  - {t: ▽, type: trans}
+  - {t: ▽, type: tran----s}
   - '`'
   - '1'
   - '2'
@@ -219,9 +219,9 @@ layers:
   - '}'
   - Ctl+ Y
   - Ctl+ Z
-  - '='
-  - /
-  - \
+  - '+'
+  - '?'
+  - '-'  
   - TAB
   - {t: ▽, type: trans}
   - ':'
@@ -243,9 +243,9 @@ layers:
   - '|'
   - Ctl+ X
   - Ctl+ C
-  - '-'
-  - ','
-  - .
+  - '_'
+  - '<'
+  - '>'
   - {t: ▽, type: trans}
   - (
   - )
