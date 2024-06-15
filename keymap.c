@@ -176,7 +176,7 @@ const uint16_t PROGMEM combo_layer_lock_sym[] = {ENT_SYM, KC_CAPS, COMBO_END};
     _______,KC_LBRC,   KC_7,   KC_8,   KC_9,KC_RBRC,  KC_AGIN,KC_UNDO, KC_EQL,KC_SLSH,KC_BSLS, KC_TAB, \
     _______,KC_SCLN,   KC_4,   KC_5,   KC_6, KC_EQL,  KC_PSTE,KC_LSFT,KC_LCTL,KC_LALT,KC_LGUI, KC_SPC, \
     KC_BSPC, KC_GRV,   KC_1,   KC_2,   KC_3,KC_BSLS,   KC_CUT,KC_COPY,KC_MINS,KC_COMM, KC_DOT,_______, \
-                             KC_DOT,   KC_0,KC_SLSH,                                   KC_ENT,_______
+                             KC_DOT,   KC_0,KC_X,                                      KC_ENT,_______
 
 
 /**
@@ -250,10 +250,23 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case RCTL_T(KC_E):
         case RSFT_T(KC_N):
             // Compensate for homerow mods
-            return TAPPING_TERM+50;
+            return TAPPING_TERM+20;
         default:
             return TAPPING_TERM;
     }
+}
+
+// Enable debugging
+// https://github.com/qmk/qmk_firmware/blob/master/docs/faq_debug.md
+void keyboard_post_init_user(void) {
+  // Customise these values to desired behaviour
+  debug_enable=false;
+  debug_matrix=false;
+  debug_keyboard=false;
+  //debug_mouse=true;
+#ifdef MACCEL_ENABLE
+    keyboard_post_init_maccel();
+#endif
 }
 
 #ifdef COMBO_ENABLE
@@ -349,10 +362,6 @@ bool caps_word_press_user(uint16_t keycode) {
 
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
     return pointing_device_task_maccel(mouse_report);
-}
-
-void keyboard_post_init_user(void) {
-    keyboard_post_init_maccel();
 }
 
 enum my_keycodes {
