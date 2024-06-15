@@ -33,16 +33,12 @@ enum charybdis_keymap_layers {
     LAYER_NAVIGATION,
     LAYER_POINTER,
     LAYER_NUMERAL,
-    LAYER_SYMBOLS,
-    LAYER_MEDIA,
+    LAYER_SYMBOLS
 };
 
-#define ESC_MED LT(LAYER_MEDIA, KC_ESC)
 #define SPC_NAV LT(LAYER_NAVIGATION, KC_SPC)
-#define LA2_NAV LT(LAYER_NAVIGATION, KC_DOT)
 #define TAB_PTR LT(LAYER_POINTER, KC_TAB)
-#define LA2_PTR LT(LAYER_POINTER, KC_COMM)
-#define LA3_PTR LT(LAYER_POINTER, KC_END)
+#define LA2_PTR LT(LAYER_POINTER, KC_DOT)
 #define BSP_NUM LT(LAYER_NUMERAL, KC_BSPC)
 #define ENT_SYM LT(LAYER_SYMBOLS, KC_ENT)
 
@@ -65,7 +61,6 @@ const uint16_t PROGMEM combo_layer_lock_sym[] = {ENT_SYM, KC_CAPS, COMBO_END};
 #    define SNIPING KC_NO
 #endif // !POINTING_DEVICE_ENABLE
 
-/* The `KC_COPY/KC_UNDO` etc are *Mac* only keys. */
 #define KC_UNDO LCTL(KC_Z)
 #define KC_AGIN LCTL(KC_Y)
 #define KC_CUT LCTL(KC_X)
@@ -92,8 +87,8 @@ const uint16_t PROGMEM combo_layer_lock_sym[] = {ENT_SYM, KC_CAPS, COMBO_END};
 #define LAYOUT_LAYER_BASE                                                                              \
      KC_APP,   KC_Q,   KC_W,   KC_F,   KC_P,   KC_B,     KC_J,   KC_L,   KC_U,   KC_Y,KC_QUOT,KC_DEL, \
     KC_F5,   KC_A,   KC_R,   KC_S,   KC_T,   KC_G,     KC_M,   KC_N,   KC_E,   KC_I,   KC_O,KC_SCLN, \
-    XXXXXXX,   KC_Z,   KC_X,   KC_C,   KC_D,   KC_V,     KC_K,   KC_H,KC_MINS,LA2_PTR,LA2_NAV,CW_TOGG, \
-                            ESC_MED,SPC_NAV,TAB_PTR,                                  ENT_SYM,BSP_NUM
+    XXXXXXX,   KC_Z,   KC_X,   KC_C,   KC_D,   KC_V,     KC_K,   KC_H,KC_MINS,KC_COMM,LA2_PTR,CW_TOGG, \
+                            KC_ESC,SPC_NAV,TAB_PTR,                                  ENT_SYM,BSP_NUM
 
 /** Convenience row shorthands. */
 #define _________________DEAD_HALF_ROW_________________  XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX
@@ -109,19 +104,6 @@ const uint16_t PROGMEM combo_layer_lock_sym[] = {ENT_SYM, KC_CAPS, COMBO_END};
  *
  * See https://github.com/manna-harbour/miryoku for the original layout.
  */
-
-/**
- * \brief Media layer.
- *
- * Tertiary left- and right-hand layer is media and RGB control.  This layer is
- * symmetrical to accommodate the left- and right-hand trackball.
- */
-#define LAYOUT_LAYER_MEDIA                                                                             \
-    _________________DEAD_HALF_ROW_________________,  RGB_VAI,RGB_HUI,RGB_SAI,RGB_MOD,RGB_SPI,RGB_TOG, \
-    ________________HOME_ROW_GACS_L________________,  KC_MPRV,KC_VOLD,KC_MUTE,KC_VOLU,KC_MNXT,RGB_M_P, \
-    EE_CLR,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,  XXXXXXX,KC_BRID,XXXXXXX,KC_BRIU,XXXXXXX,XXXXXXX, \
-                            _______,KC_MPLY,KC_MSTP,                                  KC_MSTP,KC_MPLY
-
 
 
 /** \brief Mouse layer featuring common editing keys with *all other right layers*.
@@ -144,7 +126,7 @@ const uint16_t PROGMEM combo_layer_lock_sym[] = {ENT_SYM, KC_CAPS, COMBO_END};
 #define LAYOUT_LAYER_POINTER                                                                           \
     _________________DEAD_HALF_ROW_________________,  KC_AGIN,KC_UNDO,KC_BTN3,KC_BTN5,DPI_MOD, KC_TAB, \
     ________________HOME_ROW_GACS_L________________,  KC_PSTE,KC_BTN1,KC_BTN2,KC_BTN4,S_D_MOD, KC_SPC, \
-    _______,XXXXXXX,XXXXXXX,SNIPING,DRGSCRL,XXXXXXX,   KC_CUT,KC_COPY,DRGSCRL,_______,SNIPING,_______, \
+    _______,XXXXXXX,XXXXXXX,SNIPING,DRGSCRL,XXXXXXX,   KC_CUT,KC_COPY,DRGSCRL,SNIPING,_______,_______, \
                              KC_ESC,KC_BTN1,_______,                                   KC_ENT,KC_BSPC
 
 /**
@@ -160,7 +142,7 @@ const uint16_t PROGMEM combo_layer_lock_sym[] = {ENT_SYM, KC_CAPS, COMBO_END};
 #define LAYOUT_LAYER_NAVIGATION                                                                        \
     _________________DEAD_HALF_ROW_________________,  KC_AGIN,KC_UNDO,  KC_UP,KC_HOME,KC_PGUP, KC_TAB, \
     ________________HOME_ROW_GACS_L________________,  KC_PSTE,KC_LEFT,KC_DOWN,KC_RGHT,KC_PGDN, KC_SPC, \
-    _______,KC_UNDO, KC_CUT,KC_COPY,XXXXXXX,KC_PSTE,   KC_CUT,KC_COPY, KC_INS,LA3_PTR,_______,_______, \
+    _______,KC_UNDO, KC_CUT,KC_COPY,XXXXXXX,KC_PSTE,   KC_CUT,KC_COPY, KC_INS,KC_END,_______,_______, \
                              KC_ESC,_______,_______,                                   KC_ENT,KC_BSPC
 
 /**
@@ -208,11 +190,14 @@ const uint16_t PROGMEM combo_layer_lock_sym[] = {ENT_SYM, KC_CAPS, COMBO_END};
 #define _HOME_ROW_MOD_GACS(                                                     \
     L00, L01, L02, L03, L04, L05, R06, R07, R08, R09, R10, R11,                 \
     L12, L13, L14, L15, L16, L17, R18, R19, R20, R21, R22, R23,                 \
+    L24, L25, L26, L27, L28, L29, R30, R31, R32, R33, R34, R35,                 \
     ...)                                                                        \
           L00,         L01,         L02,         L03,         L04,         L05, \
           R06,         R07,         R08,         R09,         R10,         R11, \
-          L12, LGUI_T(L13), LALT_T(L14), LCTL_T(L15), LSFT_T(L16),         L17, \
-          R18, RSFT_T(R19), RCTL_T(R20), LALT_T(R21), LGUI_T(R22),         R23, \
+          L12,         L13,         L14,         L15,         L16,         L17, \
+          R18,         R19,         R20,         R21,         R22,         R23, \
+          L24, LGUI_T(L25), LALT_T(L26), LCTL_T(L27), LSFT_T(L28),         L29, \
+          R30, RSFT_T(R31), RCTL_T(R32), LALT_T(R33),         R34,         R35, \
     __VA_ARGS__
 #define HOME_ROW_MOD_GACS(...) _HOME_ROW_MOD_GACS(__VA_ARGS__)
 
@@ -222,7 +207,6 @@ const uint16_t PROGMEM combo_layer_lock_sym[] = {ENT_SYM, KC_CAPS, COMBO_END};
 //  [LAYER_BASE] = LAYOUT_wrapper(HOME_ROW_MOD_GACS(LAYOUT_LAYER_BASE)),
 //  [LAYER_FUNCTION] = LAYOUT_wrapper(LAYOUT_LAYER_FUNCTION),
 //  [LAYER_NAVIGATION] = LAYOUT_wrapper(LAYOUT_LAYER_NAVIGATION),
-//  [LAYER_MEDIA] = LAYOUT_wrapper(LAYOUT_LAYER_MEDIA),
 //  [LAYER_NUMERAL] = LAYOUT_wrapper(LAYOUT_LAYER_NUMERAL),
 //  [LAYER_POINTER] = LAYOUT_wrapper(LAYOUT_LAYER_POINTER),
 //  [LAYER_SYMBOLS] = LAYOUT_wrapper(LAYOUT_LAYER_SYMBOLS),
@@ -230,7 +214,6 @@ const uint16_t PROGMEM combo_layer_lock_sym[] = {ENT_SYM, KC_CAPS, COMBO_END};
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT_wrapper(HOME_ROW_MOD_GACS(LAYOUT_LAYER_BASE)),
   [LAYER_NAVIGATION] = LAYOUT_wrapper(LAYOUT_LAYER_NAVIGATION),
-  [LAYER_MEDIA] = LAYOUT_wrapper(LAYOUT_LAYER_MEDIA),
   [LAYER_NUMERAL] = LAYOUT_wrapper(LAYOUT_LAYER_NUMERAL),
   [LAYER_POINTER] = LAYOUT_wrapper(LAYOUT_LAYER_POINTER),
   [LAYER_SYMBOLS] = LAYOUT_wrapper(LAYOUT_LAYER_SYMBOLS),
@@ -272,7 +255,6 @@ void keyboard_post_init_user(void) {
 #ifdef COMBO_ENABLE
 /*
 combo_t key_combos[] = {
-    COMBO(combo_layer_lock_med, TG(LAYER_MEDIA)),
     COMBO(combo_layer_lock_nav, TG(LAYER_NAVIGATION)),
     COMBO(combo_layer_lock_ptr, TG(LAYER_POINTER)),
     COMBO(combo_layer_lock_fun, TG(LAYER_FUNCTION)),
@@ -281,7 +263,6 @@ combo_t key_combos[] = {
 };
 */
 combo_t key_combos[] = {
-    COMBO(combo_layer_lock_med, TG(LAYER_MEDIA)),
     COMBO(combo_layer_lock_nav, TG(LAYER_NAVIGATION)),
     COMBO(combo_layer_lock_ptr, TG(LAYER_POINTER)),
     COMBO(combo_layer_lock_num, TG(LAYER_NUMERAL)),
@@ -422,12 +403,6 @@ const int8_t mod_alt_leds[] = {
     -1
 };
 
-/**
- * On *Media-layer* just mark volume up/down/mute keys,
- * to let colors of other kbd funcs to shine.
- */
-const int8_t media_layer_leds[] = { 47, 42, 39, -1 };
-
 bool inarray(const int8_t *arr, int8_t led) {
     while (*arr != -1 && *arr != led) arr++;
     return *arr == led;
@@ -488,9 +463,6 @@ void rgb_matrix_colorify_led(uint8_t led, uint8_t mods, bool caps_lock, bool cap
             break;
         case LAYER_SYMBOLS:
             set_color(RGB_CORAL);
-            break;
-        case LAYER_MEDIA:
-            set_color(RGB_MAGENTA);
             break;
         default:
             break;
