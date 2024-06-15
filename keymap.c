@@ -38,7 +38,7 @@ enum charybdis_keymap_layers {
 
 #define SPC_NAV LT(LAYER_NAVIGATION, KC_SPC)
 #define TAB_PTR LT(LAYER_POINTER, KC_TAB)
-#define LA2_PTR LT(LAYER_POINTER, KC_DOT)
+#define LA2_PTR LT(LAYER_POINTER, KC_COMM)
 #define BSP_NUM LT(LAYER_NUMERAL, KC_BSPC)
 #define ENT_SYM LT(LAYER_SYMBOLS, KC_ENT)
 
@@ -87,7 +87,7 @@ const uint16_t PROGMEM combo_layer_lock_sym[] = {ENT_SYM, KC_CAPS, COMBO_END};
 #define LAYOUT_LAYER_BASE                                                                              \
      KC_APP,   KC_Q,   KC_W,   KC_F,   KC_P,   KC_B,     KC_J,   KC_L,   KC_U,   KC_Y,KC_QUOT,KC_DEL, \
     KC_F5,   KC_A,   KC_R,   KC_S,   KC_T,   KC_G,     KC_M,   KC_N,   KC_E,   KC_I,   KC_O,KC_SCLN, \
-    XXXXXXX,   KC_Z,   KC_X,   KC_C,   KC_D,   KC_V,     KC_K,   KC_H,KC_MINS,KC_COMM,LA2_PTR,CW_TOGG, \
+    XXXXXXX,   KC_Z,   KC_X,   KC_C,   KC_D,   KC_V,     KC_K,   KC_H,KC_MINS,LA2_PTR,KC_DOT,CW_TOGG, \
                             KC_ESC,SPC_NAV,TAB_PTR,                                  ENT_SYM,BSP_NUM
 
 /** Convenience row shorthands. */
@@ -197,7 +197,7 @@ const uint16_t PROGMEM combo_layer_lock_sym[] = {ENT_SYM, KC_CAPS, COMBO_END};
           L12,         L13,         L14,         L15,         L16,         L17, \
           R18,         R19,         R20,         R21,         R22,         R23, \
           L24, LGUI_T(L25), LALT_T(L26), LCTL_T(L27), LSFT_T(L28),         L29, \
-          R30, RSFT_T(R31), RCTL_T(R32), LALT_T(R33),         R34,         R35, \
+          R30, RSFT_T(R31), RCTL_T(R32),         R33, LALT_T(R34),         R35, \
     __VA_ARGS__
 #define HOME_ROW_MOD_GACS(...) _HOME_ROW_MOD_GACS(__VA_ARGS__)
 
