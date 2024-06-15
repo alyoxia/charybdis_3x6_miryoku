@@ -141,8 +141,8 @@ const uint16_t PROGMEM combo_layer_lock_sym[] = {ENT_SYM, KC_CAPS, COMBO_END};
  */
 #define LAYOUT_LAYER_NAVIGATION                                                                        \
     _________________DEAD_HALF_ROW_________________,  KC_AGIN,KC_UNDO,  KC_UP,KC_HOME,KC_PGUP, KC_TAB, \
-    ________________HOME_ROW_GACS_L________________,  KC_PSTE,KC_LEFT,KC_DOWN,KC_RGHT,KC_PGDN, KC_SPC, \
-    _______,KC_UNDO, KC_CUT,KC_COPY,XXXXXXX,KC_PSTE,   KC_CUT,KC_COPY, KC_INS,KC_END,_______,_______, \
+    _________________DEAD_HALF_ROW_________________,  KC_PSTE,KC_LEFT,KC_DOWN,KC_RGHT,KC_PGDN, KC_SPC, \
+    ________________HOME_ROW_GACS_L________________,   KC_CUT,KC_COPY, KC_INS,KC_END,_______,_______, \
                              KC_ESC,_______,_______,                                   KC_ENT,KC_BSPC
 
 /**
